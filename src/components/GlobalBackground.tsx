@@ -53,8 +53,8 @@ export default function GlobalBackground({
         className="absolute inset-x-0 top-0 w-full h-[120vh] opacity-0"
       >
         <Image
-          src="/DSC02845.jpg"
-          // src="/DSC02847.jpg"
+          src="/dsc02845-2.jpg"
+          // src="/dsc02847-2.jpg"
           // src="/m-vasilyev_Fashionab.png"
           alt="Hero Background Default"
           fill
