@@ -1,13 +1,8 @@
 export const features = [
-  { num: "01", accentKey: "feature.item1Accent", textKey: "feature.item1" },
-  {
-    num: "02",
-    accentKey: "feature.item2Accent1",
-    accent2Key: "feature.item2Accent2",
-    textKey: "feature.item2",
-  },
-  { num: "03", accentKey: "feature.item3Accent", textKey: "feature.item3" },
-  { num: "04", accentKey: "feature.item4Accent", textKey: "feature.item4" },
+  { num: "01", textKey: "feature.item1" },
+  { num: "02", textKey: "feature.item2" },
+  { num: "03", textKey: "feature.item3" },
+  { num: "04", textKey: "feature.item4" },
 ];
 
 export const gridItems = [
@@ -23,28 +18,28 @@ export const catalogCategories = [
     labelKey: "catalog.cat1Label",
     sublabelKey: "catalog.cat1Sublabel",
     img: "/cyc-zine.png",
-    href: "#",
+    href: "https://cyc-zine.vercel.app",
   },
   {
     id: "cat-2",
     labelKey: "catalog.cat2Label",
     sublabelKey: "catalog.cat2Sublabel",
     img: "/webar-huye.png",
-    href: "#",
+    href: "https://webar-huye-next.vercel.app",
   },
   {
     id: "cat-3",
     labelKey: "catalog.cat3Label",
     sublabelKey: "catalog.cat3Sublabel",
     img: "/funk-ai.png",
-    href: "#",
+    href: "https://funkai.ai",
   },
   {
     id: "cat-4",
     labelKey: "catalog.cat4Label",
     sublabelKey: "catalog.cat4Sublabel",
     img: "/anno-museum-2.png",
-    href: "#",
+    href: "https://tibamef2e.com/tfd105/g4/index.html",
   },
 ];
 

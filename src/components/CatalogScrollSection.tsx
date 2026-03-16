@@ -118,20 +118,11 @@ export default function CatalogScrollSection() {
       </div>
 
       {/* Section label — stays fixed in top-left while panels scroll */}
-      {/* <div className="absolute top-8 left-6 md:left-12 z-30 flex items-center gap-4">
-        <p className="font-mono text-xs tracking-widest uppercase opacity-40">
-          {t("catalog.label")}
-        </p>
-        <span className="inline-block w-8 h-[0.5px] bg-white/20" />
-        <p className="font-mono text-xs tracking-widest uppercase opacity-20">
-          {catalogCategories.length} {t("catalog.categories")}
-        </p>
-      </div> */}
-
-      {/* Scroll hint */}
       <div className="absolute bottom-8 left-6 md:left-12 z-30 flex items-center gap-3 opacity-30">
         <span className="font-mono text-xs uppercase tracking-widest">
-          {t("catalog.scroll")}
+          <p className="font-mono text-xs tracking-widest uppercase opacity-40">
+            {t("catalog.label")}
+          </p>
         </span>
         <span className="w-12 h-[0.5px] bg-white/40" />
       </div>
@@ -181,39 +172,7 @@ export default function CatalogScrollSection() {
                 {t(cat.labelKey)}
               </p>
               <h3 className="font-serif text-4xl md:text-6xl font-light leading-[0.9] tracking-tight text-white mb-4 md:mb-6">
-                {i === 0 ? (
-                  <>
-                    <em className="italic text-accent">
-                      {t("catalog.homeTitle")}
-                    </em>
-                    <br />
-                    {t("catalog.homeSub")}
-                  </>
-                ) : i === 1 ? (
-                  <>
-                    <em className="italic text-accent">
-                      {t("catalog.officeTitle")}
-                    </em>
-                    <br />
-                    {t("catalog.officeSub")}
-                  </>
-                ) : i === 2 ? (
-                  <>
-                    <em className="italic text-accent">
-                      {t("catalog.giftTitle")}
-                    </em>
-                    <br />
-                    {t("catalog.giftSub")}
-                  </>
-                ) : (
-                  <>
-                    {t("catalog.eventTitle")}
-                    <br />
-                    <em className="italic text-accent">
-                      {t("catalog.eventSub")}
-                    </em>
-                  </>
-                )}
+                {t(cat.labelKey)}
               </h3>
               <p className="font-inter text-sm md:text-base leading-relaxed opacity-70">
                 {t(cat.sublabelKey)}

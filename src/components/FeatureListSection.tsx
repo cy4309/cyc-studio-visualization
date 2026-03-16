@@ -1,34 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { features } from "@/data";
 import { useI18n } from "@/locales/i18n";
-
-function renderFeatureTitle(
-  textKey: string,
-  accentKeys: string[],
-  t: (path: string) => string,
-) {
-  let remaining = t(textKey);
-  const parts: React.ReactNode[] = [];
-  accentKeys.forEach((accentKey, i) => {
-    const accent = t(accentKey);
-    const idx = remaining.indexOf(accent);
-    if (idx >= 0) {
-      parts.push(remaining.slice(0, idx));
-      parts.push(
-        <em key={accentKey} className="italic text-accent">
-          {accent}
-        </em>,
-      );
-      remaining = remaining.slice(idx + accent.length);
-    }
-  });
-  parts.push(remaining);
-  return <>{parts}</>;
-}
 
 export default function FeatureListSection() {
   const { t } = useI18n();
@@ -102,6 +78,7 @@ export default function FeatureListSection() {
 
   return (
     <section
+      id="process"
       ref={containerRef}
       className="relative w-full pb-32 pt-20 px-6 md:px-12 bg-transparent z-20"
     >
@@ -134,15 +111,8 @@ export default function FeatureListSection() {
                 {feature.num}
               </div>
               <div className="md:col-span-9 feature-text">
-                <h2 className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-light leading-tight tracking-tight">
-                  {renderFeatureTitle(
-                    feature.textKey,
-                    [
-                      feature.accentKey,
-                      ...(feature.accent2Key ? [feature.accent2Key] : []),
-                    ].filter(Boolean),
-                    t,
-                  )}
+                <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-light leading-tight tracking-tight">
+                  {t(feature.textKey)}
                 </h2>
               </div>
             </div>

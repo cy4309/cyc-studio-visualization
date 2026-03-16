@@ -1,33 +1,29 @@
 export const en = {
   nav: {
     mission: "Our mission",
+    process: "Process",
     catalog: "Catalog",
     team: "Team",
     contacts: "Contacts",
   },
   hero: {
-    brand: "CYC STUDIO",
+    // brand: "CYC STUDIO",
     titleLine1: "CYC Studio is a",
     titleAccent1: "creative web studio",
     titleLine2: "focused on interactive visual experiences,",
     titleLine3: "spanning frontend design, motion interaction,",
     titleAccent2: "data integration, and system implementation.",
-    // catalogLabel: "Catalog",
+    catalogLabel: "Catalog",
   },
   feature: {
     desc: "Services, Process, Philosophy, Start a Project.",
     item1:
-      "Interactive & Motion Websites, WebAR / 3D Experiences, Generative AI Integration, System & API Integration",
-    item1Accent: "(LINE, OAuth, CMS)",
+      "Interactive & Motion Websites, WebAR / 3D Experiences, Generative AI Integration, System & API Integration (LINE, OAuth, CMS)",
     item2:
-      "Discover - Understanding goals and experience direction, Design - Visual and interaction design,",
-    item2Accent1: "Develop - Frontend, backend, and system integration,",
-    item2Accent2: "Deliver - Deployment, optimization, and iteration",
-    item3: "I work at the intersection of visual design and engineering,",
-    item3Accent:
-      "crafting interactive experiences beyond traditional websites. CYC Studio blends motion, technology, and storytelling into meaningful digital products.",
-    item4: "Have a project in mind?",
-    item4Accent: "Let's build something unique together.",
+      "Discover - Understanding goals and experience direction, Design - Visual and interaction design, Develop - Frontend, backend, and system integration, Deliver - Deployment, optimization, and iteration",
+    item3:
+      "I work at the intersection of visual design and engineering, crafting interactive experiences beyond traditional websites. CYC Studio blends motion, technology, and storytelling into meaningful digital products.",
+    item4: "Have a project in mind? Let's build something unique together.",
   },
   grid: {
     house: "For the house",
@@ -51,33 +47,18 @@ export const en = {
   },
   catalog: {
     label: "Catalog",
-    categories: "categories",
-    scroll: "Scroll",
     explore: "Explore",
-    homeTitle: "Home",
-    homeSub: "and atmosphere",
-    officeTitle: "Office",
-    officeSub: "and condition",
-    giftTitle: "A gift",
-    giftSub: "and a person",
-    eventTitle: "Event and",
-    eventSub: "concept",
-    cat1Label: "Home and atmosphere",
+    cat1Label: "CYC Zine",
     cat1Sublabel:
-      "Monocultures for living spaces create a feeling of calmness and aesthetic depth in any room",
-    cat2Label: "Office and mood",
+      "Arts & culture event platform integrated with LINE campaign messaging",
+    cat2Label: "WebAR Huye",
     cat2Sublabel:
-      "Monocultures in the office create a space where it is pleasant and calm to work, and attention to detail is felt in every corner",
-    cat3Label: "A gift and a person",
+      "Web-based AR experience using face tracking and 3D rendering",
+    cat3Label: "FunkAI",
     cat3Sublabel:
-      "A bouquet as a precise gesture — one flower chosen for a specific person, moment, and mood",
-    cat4Label: "Event and concept",
-    cat4Sublabel:
-      "We choose flowers for events, supporting the style, idea, and overall mood of the event",
-    footerCat1: "Home and atmosphere",
-    footerCat2: "Office and mood",
-    footerCat3: "A gift and a person",
-    footerCat4: "Joy for no reason",
+      "Generative AI platform integrating AI APIs for content generation",
+    cat4Label: "Anno Museum",
+    cat4Sublabel: "Museum tour system and exhibition curation",
   },
   team: {
     label: "Team",
@@ -111,7 +92,6 @@ export const en = {
     tagline5: "The emotion that remains after a glance",
   },
   footer: {
-    socialNote: "Social media is under development",
     writeToUs: "Write to us",
     copyright: "© 2026 CYC Studio®",
   },

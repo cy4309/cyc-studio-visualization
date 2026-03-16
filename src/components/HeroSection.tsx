@@ -5,7 +5,9 @@ import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18n } from "@/locales/i18n";
-// import P5ParticleBackground from "@/components/P5ParticleBackground";
+import AnchorLink from "@/components/AnchorLink";
+import P5ParticleBackground from "@/components/P5ParticleBackground";
+// import { OffsetShadowButton } from "@/components/ui/OffsetShadowButton";
 
 export default function HeroSection() {
   const { lang, setLang, t } = useI18n();
@@ -75,13 +77,13 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative w-full h-[100dvh]">
+    <section ref={containerRef} id="top" className="relative w-full h-[100dvh]">
       {/* Navigation Header */}
       <header
         ref={headerRef}
         className="absolute top-0 inset-x-0 z-50 flex justify-between items-start pt-6 px-6 md:px-12 uppercase text-xs tracking-widest font-inter mix-blend-difference pb-6 transition-colors duration-300 opacity-0"
       >
-        <div className="leading-tight">
+        <AnchorLink href="#top" className="leading-tight block">
           <Image
             src="/cyc-logo.png"
             alt="CYC Studio"
@@ -89,29 +91,50 @@ export default function HeroSection() {
             height={48}
             className="h-8 w-auto"
           />
-        </div>
+        </AnchorLink>
 
         <nav className="flex flex-col text-right gap-1">
-          <a href="#ourmission" className="hover:opacity-70 transition-opacity">
+          <AnchorLink
+            href="#ourmission"
+            className="hover:opacity-70 transition-opacity"
+          >
             {t("nav.mission")}
-          </a>
-          <a href="#catalog" className="hover:opacity-70 transition-opacity">
+          </AnchorLink>
+          <AnchorLink
+            href="#process"
+            className="hover:opacity-70 transition-opacity"
+          >
+            {t("nav.process")}
+          </AnchorLink>
+          <AnchorLink
+            href="#catalog"
+            className="hover:opacity-70 transition-opacity"
+          >
             {t("nav.catalog")}
-          </a>
-          <a href="#team" className="hover:opacity-70 transition-opacity">
+          </AnchorLink>
+          {/* <AnchorLink
+            href="#team"
+            className="hover:opacity-70 transition-opacity"
+          >
             {t("nav.team")}
-          </a>
-          <a href="#contacts" className="hover:opacity-70 transition-opacity">
+          </AnchorLink> */}
+          <AnchorLink
+            href="#contacts"
+            className="hover:opacity-70 transition-opacity"
+          >
             {t("nav.contacts")}
-          </a>
+          </AnchorLink>
         </nav>
       </header>
 
-      <div className="relative z-10 w-full h-full p-6 md:p-12 flex flex-col justify-center">
+      <div
+        id="ourmission"
+        className="relative z-10 w-full h-full p-6 md:p-12 flex flex-col justify-center"
+      >
         <div className="mt-20 self-center md:self-start max-w-4xl mix-blend-difference z-20">
           <h1
             ref={heroTextRef}
-            className="text-xl md:text-3xl lg:text-5xl font-serif font-light leading-[1.1] tracking-tight opacity-0"
+            className="text-xl md:text-2xl lg:text-3xl font-serif font-light leading-[1.1] tracking-tight opacity-0"
           >
             {t("hero.titleLine1")}{" "}
             <em className="italic text-accent">{t("hero.titleAccent1")}</em>
@@ -126,7 +149,7 @@ export default function HeroSection() {
       </div>
 
       {/* toggle language button */}
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 rotate-90 origin-right mr-4 text-xs tracking-widest uppercase opacity-70 bg-black p-3 z-50">
+      <div className="z-50 absolute right-0 top-1/4 -translate-y-1/2 rotate-90 origin-right mr-4 text-xs tracking-widest opacity-70 bg-black p-3">
         <button
           type="button"
           onClick={toggleLanguage}
@@ -135,6 +158,11 @@ export default function HeroSection() {
           {lang === "zh" ? "EN" : "中文"}
         </button>
       </div>
+      {/* <div className="z-50 absolute right-0 top-1/3 -translate-y-1/2 rotate-90 mr-4">
+        <OffsetShadowButton onClick={toggleLanguage}>
+          {lang === "zh" ? "EN" : "中文"}
+        </OffsetShadowButton>
+      </div> */}
 
       {/* Catalog preview — p5 particle background */}
       {/* <div
