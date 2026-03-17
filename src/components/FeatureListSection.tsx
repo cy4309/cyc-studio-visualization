@@ -117,7 +117,7 @@ export default function FeatureListSection() {
                 {feature.num}
               </div>
               <div className="md:col-span-9 feature-text">
-                <h2 className="text-lg md:text-xl lg:text-2xl font-serif font-light leading-tight tracking-tight">
+                <h2 className="text-lg md:text-xl lg:text-2xl font-serif font-light leading-tight tracking-tight whitespace-pre-line">
                   {t(feature.textKey)}
                 </h2>
               </div>

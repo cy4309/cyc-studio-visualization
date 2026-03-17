@@ -23,12 +23,12 @@ export const en = {
     label: "Feature",
     desc: "Services, Process, Philosophy, Start a Project.",
     item1:
-      "Interactive & Motion Websites, WebAR / 3D Experiences, Generative AI Integration, System & API Integration (LINE, OAuth, CMS)",
+      "Interactive & Motion Websites,\n\nWebAR / 3D Experiences,\n\nGenerative AI Integration,\n\nSystem & API Integration (LINE, OAuth, CMS).",
     item2:
-      "Discover - Understanding goals and experience direction, Design - Visual and interaction design, Develop - Frontend, backend, and system integration, Deliver - Deployment, optimization, and iteration",
+      "Discover - Understanding goals and experience direction\n\nDesign - Visual and interaction design\n\nDevelop - Frontend, backend, and system integration\n\nDeliver - Deployment, optimization, and iteration",
     item3:
-      "I work at the intersection of visual design and engineering, crafting interactive experiences beyond traditional websites. CYC Studio blends motion, technology, and storytelling into meaningful digital products.",
-    item4: "Have a project in mind? Let's build something unique together.",
+      "I work at the intersection of visual design and engineering, crafting interactive experiences beyond traditional websites.\n\nCYC Studio blends motion, technology, and storytelling into meaningful digital products.",
+    item4: "Have a project in mind?\n\nLet's build something unique together.",
   },
   grid: {
     house: "For the house",
