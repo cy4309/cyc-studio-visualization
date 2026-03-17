@@ -39,7 +39,7 @@ export default function CatalogScrollSection() {
               trigger: section,
               start: "top bottom",
               end: "top 20%",
-              scrub: true,
+              scrub: 2,
             },
           },
         );
@@ -54,7 +54,7 @@ export default function CatalogScrollSection() {
           scrollTrigger: {
             trigger: section,
             pin: true,
-            scrub: 1,
+            scrub: 2.5,
             // Increase the total scroll distance by 1.5 viewport heights to allow for pauses
             end: () => `+=${getScrollDistance() + window.innerHeight * 1.5}`,
             invalidateOnRefresh: true,
@@ -119,10 +119,8 @@ export default function CatalogScrollSection() {
 
       {/* Section label — stays fixed in top-left while panels scroll */}
       <div className="absolute bottom-8 left-6 md:left-12 z-30 flex items-center gap-3 opacity-30">
-        <span className="font-mono text-xs uppercase tracking-widest">
-          <p className="font-mono text-xs tracking-widest uppercase opacity-40">
-            {t("catalog.label")}
-          </p>
+        <span className="font-mono text-xs uppercase tracking-widest opacity-40">
+          {t("catalog.label")}
         </span>
         <span className="w-12 h-[0.5px] bg-white/40" />
       </div>

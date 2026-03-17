@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18n } from "@/locales/i18n";
-import AnchorLink from "@/components/AnchorLink";
-import P5ParticleBackground from "@/components/P5ParticleBackground";
+import Nav from "@/components/Nav";
 // import { OffsetShadowButton } from "@/components/ui/OffsetShadowButton";
 
 export default function HeroSection() {
@@ -16,8 +14,10 @@ export default function HeroSection() {
     setLang((prev) => (prev === "zh" ? "en" : "zh"));
   };
   const heroTextRef = useRef<HTMLHeadingElement>(null);
+  const heroHeaderRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
-  const catalogRef = useRef<HTMLDivElement>(null);
+  const langToggleRef = useRef<HTMLDivElement>(null);
+  // const catalogRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -27,24 +27,38 @@ export default function HeroSection() {
       // The background flash animation takes 2.5s starting at 0.1s.
       // The original timeline used "-=2", which means this animation starts at 0.6s.
       const entryTl = gsap.timeline({ delay: 0.6 });
-      const elementsToFade = [
-        headerRef.current,
-        heroTextRef.current,
-        catalogRef.current,
-      ].filter(Boolean);
 
-      if (elementsToFade.length > 0) {
+      if (headerRef.current) {
         entryTl.fromTo(
-          elementsToFade,
+          headerRef.current,
           { opacity: 0, filter: "blur(10px)", y: 30 },
           {
             opacity: 1,
             filter: "blur(0px)",
             y: 0,
             duration: 1.5,
-            stagger: 0.15,
             ease: "power3.out",
           },
+        );
+      }
+      const textAndLang = [
+        heroHeaderRef.current,
+        heroTextRef.current,
+        langToggleRef.current,
+      ].filter(Boolean);
+      if (textAndLang.length > 0) {
+        entryTl.fromTo(
+          textAndLang,
+          { opacity: 0, filter: "blur(10px)", y: 30 },
+          {
+            opacity: 1,
+            filter: "blur(0px)",
+            y: 0,
+            duration: 1.5,
+            stagger: 0,
+            ease: "power3.out",
+          },
+          "-=0.9",
         );
       }
 
@@ -78,63 +92,29 @@ export default function HeroSection() {
 
   return (
     <section ref={containerRef} id="top" className="relative w-full h-[100dvh]">
-      {/* Navigation Header */}
-      <header
-        ref={headerRef}
-        className="absolute top-0 inset-x-0 z-50 flex justify-between items-start pt-6 px-6 md:px-12 uppercase text-xs tracking-widest font-inter mix-blend-difference pb-6 transition-colors duration-300 opacity-0"
-      >
-        <AnchorLink href="#top" className="leading-tight block">
-          <Image
-            src="/cyc-logo.png"
-            alt="CYC Studio"
-            width={48}
-            height={48}
-            className="h-8 w-auto"
-          />
-        </AnchorLink>
-
-        <nav className="flex flex-col text-right gap-1">
-          <AnchorLink
-            href="#ourmission"
-            className="hover:opacity-70 transition-opacity"
-          >
-            {t("nav.mission")}
-          </AnchorLink>
-          <AnchorLink
-            href="#process"
-            className="hover:opacity-70 transition-opacity"
-          >
-            {t("nav.process")}
-          </AnchorLink>
-          <AnchorLink
-            href="#catalog"
-            className="hover:opacity-70 transition-opacity"
-          >
-            {t("nav.catalog")}
-          </AnchorLink>
-          {/* <AnchorLink
-            href="#team"
-            className="hover:opacity-70 transition-opacity"
-          >
-            {t("nav.team")}
-          </AnchorLink> */}
-          <AnchorLink
-            href="#contacts"
-            className="hover:opacity-70 transition-opacity"
-          >
-            {t("nav.contacts")}
-          </AnchorLink>
-        </nav>
-      </header>
+      <Nav ref={headerRef} />
 
       <div
         id="ourmission"
         className="relative z-10 w-full h-full p-6 md:p-12 flex flex-col justify-center"
       >
         <div className="mt-20 self-center md:self-start max-w-4xl mix-blend-difference z-20">
+          <div ref={heroHeaderRef} className="mb-20 opacity-0">
+            <div className="flex items-center gap-3 opacity-30 mb-3">
+              <span className="font-mono text-xs uppercase tracking-widest">
+                {t("hero.label")}
+              </span>
+              <span className="w-12 h-[0.5px] bg-white/40" />
+            </div>
+
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-light leading-[0.9] tracking-tight">
+              <em className="italic text-accent">{t("hero.titleAccent2")}</em>
+            </h2>
+          </div>
+
           <h1
             ref={heroTextRef}
-            className="text-xl md:text-2xl lg:text-3xl font-serif font-light leading-[1.1] tracking-tight opacity-0"
+            className="text-lg md:text-xl lg:text-2xl font-serif font-light tracking-tight opacity-0"
           >
             {t("hero.titleLine1")}{" "}
             <em className="italic text-accent">{t("hero.titleAccent1")}</em>
@@ -143,26 +123,23 @@ export default function HeroSection() {
             <br />
             {t("hero.titleLine3")}
             <br />
-            <em className="italic text-accent">{t("hero.titleAccent2")}</em>
           </h1>
         </div>
       </div>
 
       {/* toggle language button */}
-      <div className="z-50 absolute right-0 top-1/4 -translate-y-1/2 rotate-90 origin-right mr-4 text-xs tracking-widest opacity-70 bg-black p-3">
+      <div
+        ref={langToggleRef}
+        className="z-50 p-3 absolute right-0 top-1/4 -translate-y-1/2 rotate-90 origin-right mr-5 text-xs tracking-widest opacity-0 border border-white/40 bg-primary/40 hover:bg-primary/20"
+      >
         <button
           type="button"
           onClick={toggleLanguage}
-          className="hover:opacity-70 transition-opacity self-end"
+          className="hover:opacity-70 transition-opacity self-end opacity-70"
         >
           {lang === "zh" ? "EN" : "中文"}
         </button>
       </div>
-      {/* <div className="z-50 absolute right-0 top-1/3 -translate-y-1/2 rotate-90 mr-4">
-        <OffsetShadowButton onClick={toggleLanguage}>
-          {lang === "zh" ? "EN" : "中文"}
-        </OffsetShadowButton>
-      </div> */}
 
       {/* Catalog preview — p5 particle background */}
       {/* <div

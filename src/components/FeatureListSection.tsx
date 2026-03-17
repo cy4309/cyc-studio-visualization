@@ -78,14 +78,20 @@ export default function FeatureListSection() {
 
   return (
     <section
-      id="process"
+      id="feature"
       ref={containerRef}
       className="relative w-full pb-32 pt-20 px-6 md:px-12 bg-transparent z-20"
     >
-      <div className="w-full flex justify-end mb-32">
+      <div className="w-full flex flex-col items-end mb-32">
+        <div className="flex items-center gap-3 opacity-30 mb-3">
+          <span className="font-mono text-xs uppercase tracking-widest">
+            {t("feature.label")}
+          </span>
+          <span className="w-12 h-[0.5px] bg-white/40" />
+        </div>
         <p
           ref={descRef}
-          className="max-w-md font-inter text-sm md:text-base leading-relaxed tracking-wide opacity-80 text-justify"
+          className="max-w-md font-inter text-lg md:text-xl lg:text-2xl leading-relaxed tracking-tight opacity-80 text-justify"
         >
           {t("feature.desc")}
         </p>
@@ -111,7 +117,7 @@ export default function FeatureListSection() {
                 {feature.num}
               </div>
               <div className="md:col-span-9 feature-text">
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-serif font-light leading-tight tracking-tight">
+                <h2 className="text-lg md:text-xl lg:text-2xl font-serif font-light leading-tight tracking-tight">
                   {t(feature.textKey)}
                 </h2>
               </div>

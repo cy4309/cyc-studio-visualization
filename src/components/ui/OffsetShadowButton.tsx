@@ -29,7 +29,7 @@ export function OffsetShadowButton({
         "before:rounded-[12px] before:bg-secondary before:transition-[left,top] before:duration-100",
         /* ::after 按鈕主體 */
         "after:content-[''] after:absolute after:inset-0 after:rounded-[12px] after:border-[3px] after:border-secondary",
-        "after:bg-primary after:-z-[1] after:transition-[left,top] after:duration-100",
+        "after:bg-black after:-z-[1] after:transition-[left,top] after:duration-100",
         /* active 時收合至陰影位置 */
         "active:after:left-1 active:after:top-1 active:after:w-full active:after:h-full",
         className,

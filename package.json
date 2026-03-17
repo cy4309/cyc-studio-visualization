@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.47",
+    "@supabase/supabase-js": "^2.99.2",
     "clsx": "^2.1.1",
     "gsap": "^3.14.2",
     "next": "^16.1.4",

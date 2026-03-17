@@ -1,13 +1,14 @@
 export const zh = {
   nav: {
     mission: "我們的使命",
-    process: "流程",
+    feature: "特點",
     catalog: "目錄",
     team: "團隊",
     contacts: "聯絡我們",
   },
   hero: {
     // brand: "CYC STUDIO",
+    label: "我們的使命",
     titleLine1: "CYC Studio 是一間",
     titleAccent1: "專注於創意互動與視覺體驗的網頁工作室，",
     titleLine2: "從前端視覺設計、互動開發，到資料串接與系統建置，",
@@ -16,6 +17,7 @@ export const zh = {
     catalogLabel: "目錄",
   },
   feature: {
+    label: "特點",
     desc: "服務、流程、理念、開始合作。",
     item1:
       "互動與動態網站、WebAR / 3D 體驗、生成式 AI 整合、系統與 API 整合（LINE、OAuth、CMS）",
@@ -31,20 +33,6 @@ export const zh = {
     gift: "送禮",
     event: "活動場合",
   },
-  mission: {
-    label: "我們的使命",
-    heading1: "一支",
-    heading2: "揭示花卉之美",
-    heading3: "的團隊",
-    heading4: "於每個時刻",
-    body1:
-      "我們是一群花藝師與美學家。對我們而言，形態、靜默與細節比華麗辭藻更重要，我們創造的花卉在空間中呼吸，取悅雙眼，並留在每位觀者的記憶中。",
-    body2:
-      "我們關注花在空間中創造的形態、停頓與感受。對我們而言，作品不應與室內或當日氛圍衝突，而應柔和支持，觸手可及，提醒我們那些無需解釋的簡單喜悅。",
-    line: "我們熱切關注健康與幸福",
-    body3:
-      "我們創造極簡花藝，為任何空間或活動增添優雅。您分享心情，我們選擇形態、節奏與單一花種，打造精準的視覺焦點。設計的純粹與克制讓花卉在任何環境中皆適切而富有表現力。",
-  },
   catalog: {
     label: "目錄",
     explore: "探索",
@@ -59,37 +47,26 @@ export const zh = {
   },
   team: {
     label: "團隊",
-    heading1: "每朵花都在",
-    heading2: "展現其美、節奏與",
-    heading3: "性格",
-    heading4: "於任何空間",
-    role1: "首席花藝師",
-    role2: "花藝設計師",
-    role3: "藝術顧問",
-    role4: "構圖專家",
-    name1: "Sophia Laurent",
-    name2: "Isabella Fox",
-    name3: "Amelia Fischer",
-    name4: "Charlotte Dubois",
-    name5: "Elena Schmidt",
+    role1: "創辦人 & 創意總監",
+    name1: "Eason Chu",
     desc1:
-      "Sophia 創造的花束讓每朵花展現其形態、節奏與性格。她以極簡主義為精準工具，去除多餘，只留本質。她的作品散發寧靜、自信與對花卉自然之美的尊重。",
-    desc2:
-      "Isabella 選擇的構圖成為空間的自然延伸，而非單純裝飾。她對尺度、光線與停頓有敏銳感知，創造與室內無縫融合的花束。她的作品低調而深刻。",
-    desc3:
-      "Amelia 與感受和氛圍共事，幫助色彩找到精準的位置與時機。她細心聆聽人、情境與空間，將對話轉化為平衡的視覺方案。對她而言，重要的不是華麗，而是適切與內在回應。",
-    desc4:
-      "Charlotte 以對結構、節奏與質感的特別關注創造花束。她懂得創造讓構圖完整而平靜的平衡，沒有張力或過載。她的作品帶來秩序與內在平衡感。",
-    desc5:
-      "Elena 將花視為情感與氛圍的語言。她感受如何透過形態、色彩與停頓傳達心情，並將花束轉化為長存於人心的狀態。她的風格柔和、富有表現力且非常個人化。",
-    tagline1: "感受當下，在對的時刻停下",
-    tagline2: "靜默中，形態自會說話",
-    tagline3: "適切是美的最高形式",
-    tagline4: "節奏、秩序與沉靜的深度",
-    tagline5: "一瞥之後留下的情感",
+      "具備前端開發與 AI Agent 整合實作經驗，擅長網頁生態系整合與動畫互動，並於 2025 Epson Innovation Challenge 獲獎肯定。",
+    tagline1: "熱衷打造具有深度體驗的網頁作品，期待能與您共事。",
+  },
+  contacts: {
+    label: "聯絡我們",
+    formTitle: "* 填寫需求 *",
+    formName: "姓名 *",
+    formEmail: "信箱 *",
+    formRequirements: "請描述您的需求 *",
+    formSubmit: "送出",
+    formSuccess: "已收到，我們會盡快與您聯絡。",
+    formError: "送出失敗，請稍後再試。",
+    formEmpty: "請填寫所有欄位",
+    formEmailInvalid: "請輸入正確的 Email 格式",
+    writeToUs: "或聯絡我們",
   },
   footer: {
-    writeToUs: "聯絡我們",
     copyright: "© 2026 CYC Studio®",
   },
 } as const;

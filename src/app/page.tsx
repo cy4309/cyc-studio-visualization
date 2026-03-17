@@ -8,6 +8,8 @@ import FeatureListSection from "@/components/FeatureListSection";
 // import MissionSection from "@/components/MissionSection";
 import CatalogScrollSection from "@/components/CatalogScrollSection";
 // import TeamSection from "@/components/TeamSection";
+import AboutSection from "@/components/AboutSection";
+import ContactsSection from "@/components/ContactsSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -35,6 +37,12 @@ export default function Home() {
 
       {/* ── TEAM SECTION ── */}
       {/* <TeamSection /> */}
+
+      {/* ── TEAM SECTION ── */}
+      <AboutSection />
+
+      {/* ── CONTACTS SECTION ── */}
+      <ContactsSection />
 
       {/* ── FOOTER ── */}
       <Footer />
