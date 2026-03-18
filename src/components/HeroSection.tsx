@@ -130,7 +130,7 @@ export default function HeroSection() {
       {/* toggle language button */}
       <div
         ref={langToggleRef}
-        className="z-50 p-3 absolute right-0 top-1/4 -translate-y-1/2 rotate-90 origin-right mr-5 text-xs tracking-widest opacity-0 border border-white/40 bg-primary/40 hover:bg-primary/20"
+        className="z-50 p-3 absolute right-0 top-1/3 -translate-y-1/2 rotate-90 origin-right mr-5 text-xs tracking-widest opacity-0 border border-white/40 bg-primary/40 hover:bg-primary/20"
       >
         <button
           type="button"

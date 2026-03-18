@@ -70,7 +70,7 @@ export default function AboutSection() {
               }`}
             >
               {/* Image or iframe (first member) */}
-              <div className="md:col-span-5 [direction:ltr]">
+              <div className="md:col-span-6 [direction:ltr]">
                 <div
                   className={`relative w-full overflow-hidden group aspect-[3/4]`}
                 >
@@ -78,6 +78,7 @@ export default function AboutSection() {
                     <iframe
                       src="https://chu-yu-cheng.vercel.app/"
                       title={t(member.nameKey)}
+                      allow="accelerometer; gyroscope"
                       className="absolute inset-0 w-full h-full border-0 pointer-events-none"
                     />
                   ) : (
@@ -96,7 +97,7 @@ export default function AboutSection() {
               </div>
 
               {/* Text content */}
-              <div className="md:col-span-7 flex flex-col justify-center gap-6 [direction:ltr]">
+              <div className="md:col-span-6 flex flex-col justify-center gap-6 [direction:ltr]">
                 <div>
                   <p className="font-mono text-xs tracking-widest uppercase opacity-40 mb-2">
                     {t(member.roleKey)}

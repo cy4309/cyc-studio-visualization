@@ -48,7 +48,7 @@ export const zh = {
   team: {
     label: "團隊",
     role1: "創辦人 & 創意總監",
-    name1: "Eason Chu",
+    name1: "Chester Chu",
     desc1:
       "具備前端開發與 AI Agent 整合實作經驗，擅長網頁生態系整合與動畫互動，並於 2025 Epson Innovation Challenge 獲獎肯定。",
     tagline1: "熱衷打造具有深度體驗的網頁作品，期待能與您共事。",

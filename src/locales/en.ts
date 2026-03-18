@@ -54,7 +54,7 @@ export const en = {
   team: {
     label: "Team",
     role1: "Founder & Creative Director",
-    name1: "Eason Chu",
+    name1: "Chester Chu",
     desc1:
       " With hands-on experience in frontend development and AI agent integration, I specialize in web ecosystem engineering and interactive animations. I was also recognized at the 2025 Epson Innovation Challenge.",
     tagline1:

@@ -91,7 +91,7 @@ export default function FeatureListSection() {
         </div>
         <p
           ref={descRef}
-          className="max-w-md font-inter text-lg md:text-xl lg:text-2xl leading-relaxed tracking-tight opacity-80 text-justify"
+          className="max-w-md font-inter text-base md:text-lg lg:text-xl leading-relaxed tracking-tight opacity-80 text-justify"
         >
           {t("feature.desc")}
         </p>

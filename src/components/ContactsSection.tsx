@@ -63,19 +63,15 @@ export default function ContactsSection() {
       id="contacts"
       className="relative w-full bg-background border-t border-white/10 z-20 py-16 px-6 md:px-12"
     >
-      <div className="flex items-center gap-3 opacity-30 mb-3">
-        <span className="font-mono text-xs uppercase tracking-widest">
-          {t("contacts.label")}
-        </span>
-        <span className="w-12 h-[0.5px] bg-white/40" />
-      </div>
-
       <div className="w-full max-w-[90vw] md:max-w-[70vw] mx-auto flex flex-col items-center">
-        {/* <p className="font-mono text-xs tracking-widest uppercase opacity-50 mb-12 w-full max-w-xl">
-          {t("contacts.label")}
-        </p> */}
+        <div className="w-full flex justify-start items-center gap-3 opacity-30 mb-3">
+          <span className="font-mono text-xs uppercase tracking-widest">
+            {t("contacts.label")}
+          </span>
+          <span className="w-12 h-[0.5px] bg-white/40" />
+        </div>
         {/* Requirements form */}
-        <form onSubmit={handleSubmit} className="mb-16 max-w-xl w-full">
+        <form onSubmit={handleSubmit} className="my-16 max-w-xl w-full">
           <h3 className="font-mono text-xs tracking-widest uppercase opacity-50 mb-6">
             {t("contacts.formTitle")}
           </h3>
@@ -160,7 +156,7 @@ export default function ContactsSection() {
               <span>cy4309@gmail.com</span>
             </a>
             <div className="flex gap-4 text-xs font-mono uppercase tracking-widest opacity-60">
-              <span>Eason Chu / +886 916 530 519</span>
+              <span>Chester Chu / +886 916 530 519</span>
             </div>
           </div>
         </div>
