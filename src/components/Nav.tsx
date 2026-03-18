@@ -11,7 +11,7 @@ const Nav = forwardRef<HTMLElement>(function Nav(_, ref) {
   return (
     <header
       ref={ref}
-      className="absolute top-0 inset-x-0 z-50 flex justify-between items-start pt-6 px-6 md:px-12 uppercase text-xs tracking-widest font-inter mix-blend-difference pb-6 transition-colors duration-300 opacity-0"
+      className="absolute top-0 inset-x-0 z-[10000] flex justify-between items-start pt-6 px-6 md:px-12 uppercase text-xs tracking-widest font-inter mix-blend-difference pb-6 transition-colors duration-300 opacity-0"
     >
       <AnchorLink href="#top" className="leading-tight block">
         <Image

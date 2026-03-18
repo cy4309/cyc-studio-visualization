@@ -71,7 +71,11 @@ export default function ContactsSection() {
           <span className="w-12 h-[0.5px] bg-white/40" />
         </div>
         {/* Requirements form */}
-        <form onSubmit={handleSubmit} className="my-16 max-w-xl w-full">
+        <form
+          onSubmit={handleSubmit}
+          className="my-16 max-w-xl w-full"
+          suppressHydrationWarning
+        >
           <h3 className="font-mono text-xs tracking-widest uppercase opacity-50 mb-6">
             {t("contacts.formTitle")}
           </h3>
@@ -86,9 +90,11 @@ export default function ContactsSection() {
               <input
                 id="contact-name"
                 type="text"
+                autoComplete="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                suppressHydrationWarning
                 className="w-full bg-white/5 border border-white/20 px-4 py-3 text-sm font-inter focus:outline-none focus:border-white/40 transition-colors"
               />
             </div>
@@ -102,9 +108,12 @@ export default function ContactsSection() {
               <input
                 id="contact-email"
                 type="email"
+                inputMode="email"
+                autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                suppressHydrationWarning
                 className="w-full bg-white/5 border border-white/20 px-4 py-3 text-sm font-inter focus:outline-none focus:border-white/40 transition-colors"
               />
             </div>
@@ -121,6 +130,7 @@ export default function ContactsSection() {
                 onChange={(e) => setRequirements(e.target.value)}
                 required
                 rows={4}
+                suppressHydrationWarning
                 className="w-full bg-white/5 border border-white/20 px-4 py-3 text-sm font-inter focus:outline-none focus:border-white/40 transition-colors resize-none"
               />
             </div>

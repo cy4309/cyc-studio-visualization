@@ -75,12 +75,20 @@ export default function AboutSection() {
                   className={`relative w-full overflow-hidden group aspect-[3/4]`}
                 >
                   {index === 0 ? (
-                    <iframe
-                      src="https://chu-yu-cheng.vercel.app/"
-                      title={t(member.nameKey)}
-                      allow="accelerometer; gyroscope"
-                      className="absolute inset-0 w-full h-full border-0 pointer-events-none"
-                    />
+                    <>
+                      <iframe
+                        src="https://chu-yu-cheng.vercel.app/"
+                        title={t(member.nameKey)}
+                        allow="accelerometer; gyroscope"
+                        className="absolute inset-0 w-full h-full border-0 pointer-events-none"
+                        suppressHydrationWarning
+                      />
+                      {/* 透明遮罩：阻擋 iframe 接收觸控，touch-action: pan-y 讓滑動傳給父層 */}
+                      <div
+                        className="absolute inset-0 z-20 touch-pan-y"
+                        aria-hidden
+                      />
+                    </>
                   ) : (
                     <Image
                       src={member.img}
