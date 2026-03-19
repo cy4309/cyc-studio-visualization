@@ -16,7 +16,7 @@ export default function HeroSection() {
   const heroTextRef = useRef<HTMLHeadingElement>(null);
   const heroHeaderRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
-  const langToggleRef = useRef<HTMLDivElement>(null);
+  const langToggleRef = useRef<HTMLButtonElement>(null);
   // const catalogRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLElement>(null);
 
@@ -127,20 +127,16 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* toggle language button */}
-      <div
+      {/* toggle language button — 整塊可點擊 */}
+      <button
         ref={langToggleRef}
-        className="z-50 p-3 absolute right-0 top-1/3 -translate-y-1/2 rotate-90 origin-right mr-5 text-xs tracking-widest opacity-0 border border-white/40 bg-primary/40 hover:bg-primary/20"
+        type="button"
+        onClick={toggleLanguage}
+        aria-label={lang === "zh" ? "Switch to English" : "切換至中文"}
+        className="z-50 p-3 absolute right-0 top-1/3 -translate-y-1/2 rotate-90 origin-right mr-5 text-xs tracking-widest opacity-0 border border-white/40 bg-primary/40 hover:bg-primary/20 transition-colors cursor-pointer"
       >
-        <button
-          type="button"
-          onClick={toggleLanguage}
-          aria-label={lang === "zh" ? "Switch to English" : "切換至中文"}
-          className="hover:opacity-70 transition-opacity self-end opacity-70"
-        >
-          {lang === "zh" ? "EN" : "中文"}
-        </button>
-      </div>
+        {lang === "zh" ? "EN" : "中文"}
+      </button>
 
       {/* Catalog preview — p5 particle background */}
       {/* <div
