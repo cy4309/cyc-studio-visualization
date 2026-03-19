@@ -1,0 +1,14 @@
+# 強制使用 LF，避免 Windows 上出現 LF/CRLF 轉換警告
+* text=auto eol=lf
+
+# 二進位檔案不轉換
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary

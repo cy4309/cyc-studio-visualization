@@ -135,6 +135,7 @@ export default function HeroSection() {
         <button
           type="button"
           onClick={toggleLanguage}
+          aria-label={lang === "zh" ? "Switch to English" : "切換至中文"}
           className="hover:opacity-70 transition-opacity self-end opacity-70"
         >
           {lang === "zh" ? "EN" : "中文"}

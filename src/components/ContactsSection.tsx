@@ -137,6 +137,7 @@ export default function ContactsSection() {
             <button
               type="submit"
               disabled={status === "loading"}
+              aria-label={t("contacts.formSubmit")}
               className="self-end px-6 py-3 text-xs font-mono uppercase tracking-widest bg-primary/40 border border-white/40 hover:bg-primary/20 transition-colors disabled:opacity-50"
             >
               {status === "loading" ? "..." : t("contacts.formSubmit")}

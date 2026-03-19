@@ -49,42 +49,61 @@ export default function CatalogScrollSection() {
           gsap.set(el, { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : 30 });
         });
 
-        // Create a timeline to allow pauses before and after the horizontal scroll
+        // Progress 0~1 對應整體捲動，用於計算 track.x 與視覺
+        const scrollProgress = { value: 0 };
+        const updateVisuals = () => {
+          const rawProgress = scrollProgress.value * (numCards - 1);
+          const x = -scrollProgress.value * getScrollDistance();
+          gsap.set(track, { x });
+
+          backgrounds.forEach((bg, i) => {
+            const dist = Math.abs(rawProgress - i);
+            gsap.set(bg, { opacity: Math.max(0, 1 - dist) });
+          });
+          panelTexts.forEach((el, i) => {
+            const dist = Math.abs(rawProgress - i);
+            const opacity = Math.max(0, 1 - dist * 2);
+            gsap.set(el, { opacity, y: (1 - opacity) * 20 });
+          });
+        };
+
+        // 每個項目之間加入停頓，讓使用者有時間閱讀
+        const pauseDuration = 0.35; // 每個項目停頓時間（越大停越久）
+        const scrollSegmentDuration = 0.8; // 項目間捲動時間（越小切換越快）
+
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: section,
             pin: true,
             scrub: 2.5,
-            // Increase the total scroll distance by 1.5 viewport heights to allow for pauses
-            end: () => `+=${getScrollDistance() + window.innerHeight * 1.5}`,
+            // 增加捲動距離以容納各項目停頓
+            end: () =>
+              `+=${getScrollDistance() + window.innerHeight * (1.5 + numCards * 0.6)}`,
             invalidateOnRefresh: true,
           },
         });
 
-        tl.to({}, { duration: 0.15 }) // Pause when entering the section
-          .to(track, {
-            x: () => -getScrollDistance(),
-            ease: "none",
-            duration: 1,
-            onUpdate: function () {
-              // Use the progress of THIS specific tween, not the entire scrollTrigger timeline
-              const rawProgress = this.progress() * (numCards - 1);
+        tl.to(scrollProgress, { value: 0, duration: 0.15 }); // 進入 section 時停頓
 
-              backgrounds.forEach((bg, i) => {
-                const dist = Math.abs(rawProgress - i);
-                const opacity = Math.max(0, 1 - dist);
-                gsap.set(bg, { opacity });
-              });
+        for (let i = 1; i <= numCards - 1; i++) {
+          const targetProgress = i / (numCards - 1);
+          tl.to(scrollProgress, {
+            value: targetProgress,
+            duration: scrollSegmentDuration,
+            ease: "power2.inOut",
+            onUpdate: updateVisuals,
+          }).to(scrollProgress, {
+            value: targetProgress,
+            duration: pauseDuration,
+            onUpdate: updateVisuals,
+          });
+        }
 
-              panelTexts.forEach((el, i) => {
-                const dist = Math.abs(rawProgress - i);
-                const opacity = Math.max(0, 1 - dist * 2);
-                const y = (1 - opacity) * 20;
-                gsap.set(el, { opacity, y });
-              });
-            },
-          })
-          .to({}, { duration: 0.15 }); // Pause when finishing the scroll before unpinning
+        tl.to(scrollProgress, {
+          value: 1,
+          duration: 0.2,
+          onUpdate: updateVisuals,
+        }); // 最後一項停頓
       }
     }, catalogSectionRef);
 
@@ -107,7 +126,7 @@ export default function CatalogScrollSection() {
           >
             <Image
               src={cat.img}
-              alt=""
+              alt={i === 0 ? t(cat.labelKey) : ""}
               fill
               sizes="100vw"
               className="object-cover scale-125"
