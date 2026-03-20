@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import "@/assets/styles/globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -74,6 +74,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
+};
+
+/** 避免 iOS 聚焦 input 時自動放大視窗（等同 maximum-scale=1, user-scalable=no） */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({
