@@ -14,6 +14,7 @@ export default function CatalogScrollSection() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
+    let alive = true;
     const ctx = gsap.context(() => {
       // Horizontal scroll for catalog section
       if (catalogSectionRef.current && horizontalTrackRef.current) {
@@ -50,20 +51,24 @@ export default function CatalogScrollSection() {
         });
 
         // Progress 0~1 對應整體捲動，用於計算 track.x 與視覺
+        // 注意：勿在 timeline onUpdate 裡對這些節點呼叫 gsap.set() — gsap.context 會在回呼時報 Invalid scope
+        // （ScrollTrigger 更新時機與 context 範圍檢查不相容）。改用手動寫 style。
         const scrollProgress = { value: 0 };
         const updateVisuals = () => {
+          if (!alive || !section.isConnected || !track.isConnected) return;
           const rawProgress = scrollProgress.value * (numCards - 1);
           const x = -scrollProgress.value * getScrollDistance();
-          gsap.set(track, { x });
+          track.style.transform = `translate3d(${x}px,0,0)`;
 
           backgrounds.forEach((bg, i) => {
             const dist = Math.abs(rawProgress - i);
-            gsap.set(bg, { opacity: Math.max(0, 1 - dist) });
+            bg.style.opacity = String(Math.max(0, 1 - dist));
           });
           panelTexts.forEach((el, i) => {
             const dist = Math.abs(rawProgress - i);
             const opacity = Math.max(0, 1 - dist * 2);
-            gsap.set(el, { opacity, y: (1 - opacity) * 20 });
+            el.style.opacity = String(opacity);
+            el.style.transform = `translate3d(0,${(1 - opacity) * 20}px,0)`;
           });
         };
 
@@ -104,10 +109,15 @@ export default function CatalogScrollSection() {
           duration: 0.2,
           onUpdate: updateVisuals,
         }); // 最後一項停頓
+
+        updateVisuals();
       }
     }, catalogSectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      alive = false;
+      ctx.revert();
+    };
   }, []);
 
   return (

@@ -5,10 +5,18 @@ const baseUrl =
   "https://cyc-studio-visualization.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const root = baseUrl.replace(/\/$/, "");
+  const now = new Date();
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: `${root}/zh`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 1,
+    },
+    {
+      url: `${root}/en`,
+      lastModified: now,
       changeFrequency: "monthly" as const,
       priority: 1,
     },

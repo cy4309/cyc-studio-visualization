@@ -1,0 +1,31 @@
+# 專案背景與技術偏好
+
+框架：Next.js 16 (App Router)
+
+資料庫/後端：Supabase (使用 TypeScript Client)
+
+視覺/動效：Lenis Scroll, gsap, React-three-fiber (3D/AR 相關)
+
+樣式：Tailwind CSS
+
+# 核心開發原則
+
+SEO 第一：所有頁面必須包含適當的 Metadata，遵循 Lighthouse 最佳實踐。
+
+視覺品質：身為視覺型工程師，UI 必須精緻。元件應考慮動態效果與響應式配置。
+
+效能優化：優先使用 Server Components，除非需要互動才用 'use client'。
+
+型別安全：強制使用 TypeScript，嚴禁使用 any。
+
+# 程式碼風格
+
+使用 Arrow functions 定義組件。
+
+專案結構應清晰，UI 組件放在 @/components，邏輯放在 @/lib 或 @/hooks。
+
+Supabase 的 Query 應正確處理錯誤捕捉 (Error handling)。
+
+# 專案特定參考
+
+專案涉及 3D 影片 (SBS) 與 AR Anchors 處理，請在相關代碼中保持高效的記憶體管理。

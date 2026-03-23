@@ -37,13 +37,19 @@ function getText(lang: Language, path: string): string {
   return typeof current === "string" ? current : path;
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("zh");
+export function I18nProvider({
+  children,
+  defaultLang,
+}: {
+  children: ReactNode;
+  /** 由網址 /zh、/en 決定，供 SEO 與 hreflang */
+  defaultLang: Language;
+}) {
+  const [lang, setLang] = useState<Language>(defaultLang);
 
   useEffect(() => {
-    const saved = localStorage.getItem("lang") as Language | null;
-    if (saved) setLang(saved);
-  }, []);
+    setLang(defaultLang);
+  }, [defaultLang]);
 
   useEffect(() => {
     localStorage.setItem("lang", lang);

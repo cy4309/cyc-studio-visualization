@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useI18n } from "@/locales/i18n";
@@ -8,10 +9,14 @@ import Nav from "@/components/Nav";
 // import { OffsetShadowButton } from "@/components/ui/OffsetShadowButton";
 
 export default function HeroSection() {
-  const { lang, setLang, t } = useI18n();
+  const { lang, t } = useI18n();
+  const router = useRouter();
 
   const toggleLanguage = () => {
-    setLang((prev) => (prev === "zh" ? "en" : "zh"));
+    const next = lang === "zh" ? "en" : "zh";
+    const hash =
+      typeof window !== "undefined" ? window.location.hash ?? "" : "";
+    router.push(`/${next}${hash}`, { scroll: false });
   };
   const heroTextRef = useRef<HTMLHeadingElement>(null);
   const heroHeaderRef = useRef<HTMLDivElement>(null);
