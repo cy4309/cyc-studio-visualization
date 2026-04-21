@@ -4,6 +4,14 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getStoragePublicUrl } from "@/lib/storage";
+
+function heroBackgroundSrc(): string {
+  if (!process.env.NEXT_PUBLIC_SUPABASE_URL?.trim()) {
+    return "/a1.jpg";
+  }
+  return getStoragePublicUrl("a1.jpg");
+}
 
 // This background is fixed behind all sections and has its own parallax effect against the page container
 export default function GlobalBackground({
@@ -46,6 +54,11 @@ export default function GlobalBackground({
     }
   }, [containerRef]);
 
+  const heroSrc = heroBackgroundSrc();
+  // Supabase Storage 經 /_next/image 代理時，偶發「upstream response is invalid」（標頭/串流與優化器不相容）。
+  // 公開 URL 改由瀏覽器直接載入即可。
+  const heroUnoptimized = heroSrc.startsWith("http");
+
   return (
     <div className="fixed inset-0 z-0 bg-background pointer-events-none">
       <div
@@ -53,14 +66,13 @@ export default function GlobalBackground({
         className="absolute inset-x-0 top-0 w-full h-[120vh] opacity-0"
       >
         <Image
-          src="/a1.jpg"
-          // src="/a2.jpg"
-          // src="/m-vasilyev_Fashionab.png"
+          src={heroSrc}
           alt="Hero Background Default"
           fill
           sizes="100vw"
           className="object-cover object-top opacity-80"
           priority
+          unoptimized={heroUnoptimized}
         />
       </div>
       {/* Noise layer */}
