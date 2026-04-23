@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: CYC Studio Visualization API
+  description: |
+    官網後端 API（Next.js App Router）。
+    - 聯絡表單寫入 Supabase 並寄信通知（若已設定 Resend）。
+    - Cron 保活為 Vercel 排程觸發，需 Bearer 金鑰。
+  version: "1.0.0"
+
+servers:
+  - url: /
+    description: 與本網站同源（Try it 時請在已部署網域開啟 /api-docs）
+
+paths:
+  /api/contact:
+    post:
+      summary: 提交聯絡表單
+      description: |
+        將姓名、Email、需求寫入 `contact_requests`，成功後嘗試寄信通知（依環境設定）。
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, email, requirements]
+              properties:
+                name:
+                  type: string
+                  example: 王小明
+                email:
+                  type: string
+                  format: email
+                  example: client@example.com
+                requirements:
+                  type: string
+                  example: 想詢問網站改版與時程
+      responses:
+        "200":
+          description: 寫入成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        "400":
+          description: 缺少欄位或格式錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+        "500":
+          description: 伺服器或資料庫錯誤
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+  /api/cron/keep-alive:
+    get:
+      summary: Supabase 保活（Cron）
+      description: |
+        對 `contact_requests` 執行輕量 SELECT，維持免費專案活躍。
+        若設定 `CRON_SECRET`，必須帶 `Authorization: Bearer <CRON_SECRET>`。
+      security:
+        - CronBearer: []
+      responses:
+        "200":
+          description: 成功（或查詢成功但無列）
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
+                  rowCount:
+                    type: integer
+                  sample:
+                    nullable: true
+        "401":
+          description: 已設定 CRON_SECRET 但未帶或帶錯 Bearer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Unauthorized
+                  timestamp:
+                    type: string
+                    format: date-time
+        "500":
+          description: Supabase 查詢失敗等
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorBody"
+
+components:
+  securitySchemes:
+    CronBearer:
+      type: http
+      scheme: bearer
+      bearerFormat: CRON_SECRET
+      description: 與環境變數 CRON_SECRET 相同；僅限 Cron 或內部工具使用。
+
+  schemas:
+    ErrorBody:
+      type: object
+      properties:
+        error:
+          type: string
+        ok:
+          type: boolean
+          example: false

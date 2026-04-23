@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@scalar/api-reference-react": "^0.8.70",
     "@studio-freight/react-lenis": "^0.0.47",
     "@supabase/supabase-js": "^2.99.2",
     "clsx": "^2.1.1",
