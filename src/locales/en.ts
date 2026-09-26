@@ -42,14 +42,17 @@ export const en = {
     cat1Label: "CYC Zine",
     cat1Sublabel:
       "Arts & culture event platform integrated with LINE campaign messaging",
-    cat2Label: "WebAR Huye",
+    cat2Label: "CYC Afterhours",
     cat2Sublabel:
-      "Web-based AR experience using face tracking and 3D rendering",
-    cat3Label: "FunkAI",
+      "An after-hours personal database powered by Cloudflare D1 and R2",
+    cat3Label: "WebAR Huye",
     cat3Sublabel:
+      "Web-based AR experience using face tracking and 3D rendering",
+    cat4Label: "FunkAI",
+    cat4Sublabel:
       "Generative AI platform integrating AI APIs for content generation",
-    cat4Label: "Anno Museum",
-    cat4Sublabel: "Museum tour system and exhibition curation",
+    cat5Label: "Anno Museum",
+    cat5Sublabel: "Museum tour system and exhibition curation",
   },
   team: {
     label: "Team",
